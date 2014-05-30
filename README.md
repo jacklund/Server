@@ -5,7 +5,7 @@ This is a project to create a simple message-oriented threaded server in Java. I
 ![Server Class Diagram](server.png)
 
 ## Example Code
-    ::::java
+    ```java
     public class MyServer extends ThreadedServer<String> {
 
       public static class Processor implements MessageProcessor<String> {
@@ -46,3 +46,4 @@ This is a project to create a simple message-oriented threaded server in Java. I
 		server.start();
 	  }
 	}
+  ```
