@@ -2,7 +2,7 @@
 This is a project to create a simple message-oriented threaded server in Java. It is assumed that the server receives messages via some mechanism (e.g., a TCP/IP socket, a queue). The main class is the ``ThreadedServer`` class, which uses the Java [``ExecutorService``](http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ExecutorService.html) to create a thread pool of worker threads which receive a message and process it using the ``MessageProcessor`` class. Each thread has its own ``MessageProcessor`` in thread-local storage, so the processing code doesn't need to worry about thread safety. The server creates new ``MessageProcessor``s via the ``MessageProcessorFactory``.
 
 ## Class Diagram
-![Server Class Diagram](https://raw.githubusercontent.com/jacklund/Server/master/server.png)
+![Server Class Diagram](server.png)
 
 ## Example Code
     ::::java
