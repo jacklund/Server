@@ -5,45 +5,45 @@ This is a project to create a simple message-oriented threaded server in Java. I
 ![Server Class Diagram](server.png)
 
 ## Example Code
-    ```java
-    public class MyServer extends ThreadedServer<String> {
+```java
+public class MyServer extends ThreadedServer<String> {
 
-      public static class Processor implements MessageProcessor<String> {
-        public void process(String message) {
-          System.out.println("Got message: " + message);
-        }
-      }
+  public static class Processor implements MessageProcessor<String> {
+    public void process(String message) {
+      System.out.println("Got message: " + message);
+    }
+  }
 
-      public static class ProcessorFactory implements MessageProcessorFactory<String> {
-        public Processor create() {
-          return new Processor();
-        }
-      }
+  public static class ProcessorFactory implements MessageProcessorFactory<String> {
+    public Processor create() {
+      return new Processor();
+    }
+  }
 
-      public String readMessageFromSocket() {
-        // Some code here
-      }
+  public String readMessageFromSocket() {
+    // Some code here
+  }
 
-      @Override
-      protected void run() {
-        String message = readMessageFromSocket();
-        while (message != null) {
-          process(message);
-        }
-      }
+  @Override
+  protected void run() {
+    String message = readMessageFromSocket();
+    while (message != null) {
+      process(message);
+    }
+  }
 
-      public static void main(String[] args) {
-        // Instantiate server
-        MyServer server = new MyServer();
+  public static void main(String[] args) {
+    // Instantiate server
+    MyServer server = new MyServer();
 
-        // Give it the message processor factory
-		server.setMessageProcessorFactory(new ProcessorFactory());
+    // Give it the message processor factory
+    server.setMessageProcessorFactory(new ProcessorFactory());
 
-		// Tell it what type of thread pool to use
-		server.setPool(Executors.newCachedThreadPool());
+    // Tell it what type of thread pool to use
+    server.setPool(Executors.newCachedThreadPool());
 
-		// Start up the server!
-		server.start();
-	  }
-	}
-  ```
+    // Start up the server!
+    server.start();
+  }
+}
+```
